@@ -24,32 +24,35 @@ GPIO.setup(13, GPIO.IN)    #SO2
 GPIO.setup(15, GPIO.IN)    #S03
 GPIO.setup(19, GPIO.IN)    #SO4
 GPIO.setup(21, GPIO.IN)    #SO5
-sleep(1)
-pwm1 = GPIO.PWM(enable_Lpin, 400)
+
+
+pwm1 = GPIO.PWM(enable_Lpin, 500)
 pwm1.start(0)
 
-pwm2 = GPIO.PWM(enable_Rpin, 400)
+pwm2 = GPIO.PWM(enable_Rpin, 500)
 pwm2.start(0)
+
+speed=60
 
 
 def forward():
     GPIO.output(in1_Lpin, True)
     GPIO.output(in2_Lpin, False)
-    pwm1.ChangeDutyCycle(60)
+    pwm1.ChangeDutyCycle(speed)
     
     GPIO.output(in1_Rpin, True)
     GPIO.output(in2_Rpin, False)
-    pwm2.ChangeDutyCycle(60)
+    pwm2.ChangeDutyCycle(speed)
 
 def halt_here():
     print "halt"
-    pwm1.ChangeDutyCycle(0)
-    pwm2.ChangeDutyCycle(0)
+    pwm1.ChangeDutyCycle(speed)
+    pwm2.ChangeDutyCycle(speed)
     
 def slight_turn_right():
     GPIO.output(in1_Lpin, True)
     GPIO.output(in2_Lpin, False)
-    pwm1.ChangeDutyCycle(60)
+    pwm1.ChangeDutyCycle(speed)
     
     GPIO.output(in1_Rpin, True)
     GPIO.output(in2_Rpin, False)
@@ -58,20 +61,20 @@ def slight_turn_right():
 def sharp_turn_right():
     GPIO.output(in1_Lpin, True)
     GPIO.output(in2_Lpin, False)
-    pwm1.ChangeDutyCycle(60)
+    pwm1.ChangeDutyCycle(speed)
     
     GPIO.output(in1_Rpin, False)
     GPIO.output(in2_Rpin, True)
-    pwm2.ChangeDutyCycle(60)
+    pwm2.ChangeDutyCycle(speed)
     
 def sharp_turn_left():
     GPIO.output(in1_Lpin, False)
     GPIO.output(in2_Lpin, True)
-    pwm1.ChangeDutyCycle(60)
+    pwm1.ChangeDutyCycle(speed)
     
     GPIO.output(in1_Rpin, True)
     GPIO.output(in2_Rpin, False)
-    pwm2.ChangeDutyCycle(60)
+    pwm2.ChangeDutyCycle(speed)
     
 def slight_turn_left():
     GPIO.output(in1_Lpin, False)
@@ -80,10 +83,11 @@ def slight_turn_left():
     
     GPIO.output(in1_Rpin, True)
     GPIO.output(in2_Rpin, False)
-    pwm2.ChangeDutyCycle(60)
+    pwm2.ChangeDutyCycle(speed)
     
 
 try:
+
   while True:
     s1=GPIO.input(11)
     s2=GPIO.input(13)
