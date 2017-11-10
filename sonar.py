@@ -3,12 +3,6 @@ import time
 
 GPIO.setmode(GPIO.BOARD)
 
-# working
-#TRIG_LEFT = 23
-#ECHO_LEFT = 29
-# end working
-
-
 
 TRIG_RIGHT = 23
 ECHO_RIGHT = 29
@@ -28,22 +22,28 @@ GPIO.setup(ECHO_RIGHT,GPIO.IN)
 GPIO.output(TRIG_LEFT, False)
 GPIO.output(TRIG_RIGHT, False)
 
-def sonar():
-  counter=0
-  while True:
-    GPIO.output(TRIG_LEFT, True)
-    time.sleep(0.1)
-    GPIO.output(TRIG_LEFT, False)
+class sonar:
+  def __init__(self,TRIG,ECHO):
+    self.TRIG_Pin=TRIG
+    self.ECHO_Pin=ECHO
+    GPIO.setup(self.TRIG_Pin,GPIO.OUT)
+    GPIO.setup(self.ECHO_Pin,GPIO.IN)
+    GPIO.output(self.TRIG_Pin, False)
 
-    while GPIO.input(ECHO_LEFT)==0:
+  def read(self):
+    GPIO.output(self.TRIG_Pin, True)
+    time.sleep(0.1)
+    GPIO.output(self.TRIG_Pin, False)
+
+    while GPIO.input(self.ECHO_Pin)==0:
       pulse_start = time.time()
 
-    while GPIO.input(ECHO_LEFT)==1:
+    while GPIO.input(self.ECHO_Pin)==1:
       pulse_end = time.time()
 
     pulse_duration = pulse_end - pulse_start
     distance = pulse_duration * 17150
     distance = round(distance, 2)
-    print "Distance L:",distance,"cm"
-
-sonar()
+    
+    return distance
+    

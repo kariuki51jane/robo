@@ -12,24 +12,42 @@ GPIO.setup(Left_servo, GPIO.OUT)
 pLeftServo = GPIO.PWM(Left_servo, 50)
 pRightServo = GPIO.PWM(Right_servo, 50)
 
-pLeftServo.start(7.5)
-pRightServo.start(7.5)
+pLeftServo.start(2.5)
+pRightServo.start(2.5)
+
+
+
 
 try:
         while True:
-		pLeftServo.ChangeDutyCycle(7.5)  # turn towards 90 degree
-		pRightServo.ChangeDutyCycle(7.5)  # turn towards 90 degree
-		time.sleep(0.25) # sleep 
-
-		pLeftServo.ChangeDutyCycle(2.5)  # turn towards 0 degree
-		pRightServo.ChangeDutyCycle(2.5)  # turn towards 90 degree
-		time.sleep(0.25) # sleep
-
-		pLeftServo.ChangeDutyCycle(12.5) # turn towards 180 degree
-		pRightServo.ChangeDutyCycle(12.5)  # turn towards 90 degree
-                time.sleep(0.25) # sleep
-
-
+                pRightServo.ChangeDutyCycle(2.5)
+                pLeftServo.ChangeDutyCycle(2.5)
+                time.sleep(0.2)
+                pRightServo.ChangeDutyCycle(5)
+                pLeftServo.ChangeDutyCycle(5)
+                time.sleep(0.2)
+                pRightServo.ChangeDutyCycle(7.5)
+                pLeftServo.ChangeDutyCycle(7.5)
+                time.sleep(0.2) 
+                pRightServo.ChangeDutyCycle(10)
+                pLeftServo.ChangeDutyCycle(10)
+                time.sleep(0.2)
+                pRightServo.ChangeDutyCycle(12.5)
+                pLeftServo.ChangeDutyCycle(12.5)
+                time.sleep(0.2)
+                pRightServo.ChangeDutyCycle(10)
+                pLeftServo.ChangeDutyCycle(10)
+                time.sleep(0.2)
+                pRightServo.ChangeDutyCycle(7.5)
+                pLeftServo.ChangeDutyCycle(7.5)
+                time.sleep(0.2)
+                pRightServo.ChangeDutyCycle(5)
+                pLeftServo.ChangeDutyCycle(5)
+                time.sleep(0.2)
+                
 except KeyboardInterrupt:
-	p.stop()
+        pLeftServo.stop()
+        pRightServo.stop()
         GPIO.cleanup()
+
+

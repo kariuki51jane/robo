@@ -22,7 +22,8 @@ def servo():
 	pwm.start(right)
   	time.sleep(0.12)
   	pwm.start(r1p)
-  	time.sleep(0.12) pwm.stop()
+  	time.sleep(0.12)
+  	pwm.stop()
 
 servo()
 GPIO.cleanup()
