@@ -1,3 +1,5 @@
+import drive
+import encoders
 #here, we have chosen to drive a Z like shape;
 # that is:
 # 
@@ -15,33 +17,36 @@
 # The commands have been determined by hand, i.e., by trial and error.
 # Alternatively, we could have chosen to drive in arcs.
 
-speed = 300;
+speed = 50
 
-
-
-
-
+encoder=encoders.wheels(26,24)
 
 
 # drive from A to B
-#kSetSpeed(h, speed, speed);
-#pause(3.0);
+drive.SetSpeed(speed, speed);
+print(encoder.get())
+drive.sleep(1)
 
 # turn towards C
-#kSetSpeed(h, -speed,speed);
-#pause(1.2);
+drive.SetSpeed(-speed,speed);
+drive.sleep(0.7)
 
 #drive from B to C
-#kSetSpeed(h, speed, speed);
-#pause(8.0);
+drive.SetSpeed(speed, speed);
+drive.sleep(1.5)
 
 # turn towards D
-#kSetSpeed(h, speed,-speed);
-#pause(1.2);
+drive.SetSpeed(speed,-speed);
+drive.sleep(0.7)
 
 # drive from C to D
-#kSetSpeed(h, speed, speed);
-#pause(3.5);
+drive.SetSpeed(speed, speed);
+drive.sleep(1)
 
-# stop at the target
-#kStop(h);
+# stop
+drive.stop();
+
+while 1:
+    sleep(10)
+
+drive.gpioCleanUP()
