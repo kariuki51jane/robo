@@ -1,0 +1,63 @@
+<html ng-app='myApp'>
+<head>
+   <link rel="stylesheet" type="text/css" href="css/style.css">
+   <script src="http://code.angularjs.org/1.2.10/angular.js"></script>
+   <script src="javascripts/ng-google-chart.js"></script>
+   <script src="/socket.io/socket.io.js"></script>
+   <script src="javascripts/app.js"></script>
+</head>
+
+<body ng-controller="myController">
+
+<p>
+    Energy : <input type=range min=0 max=3000 value={{aa}} ng-model="aa" ng-change="myChart.data[1][1]=1*aa"> {{aa}}
+</p>
+
+<br>
+<br>
+
+Simulate
+
+
+<label class="switch">
+   <input type="checkbox" unchecked ng-model="checkboxModel.value1">
+   <span class="slider round"></span>
+</label>
+
+
+<p>
+   Energy Decreasing Rate: <input type=range min=0 max=100 value={{bb}} ng-model="bb" ng-change="myChart.data[2][1]=1*bb">{{bb}}
+</p>
+<p>
+   Temperature: <input type=range min=20 max=40 value={{cc}} ng-model="cc" ng-change="myChart.data[3][1]=1*cc">{{cc}}
+</p>
+
+
+
+<br>
+<br>
+
+<div id="ck-button">
+    <label>
+        <input type="checkbox" unchecked ng-model="checkboxModel.value2" ng-click="start_stop()" ><span>On/OFF</span>
+    </label>
+</div>
+
+<br>
+<br>
+
+<div google-chart chart="myChart"
+     style="border:1px inset black;padding:0;width:400px">
+</div>
+
+
+<br>
+<br>
+
+
+Distance to Travel : 250m
+
+</body>
+
+
+</html>

@@ -1,0 +1,132 @@
+.btn {
+  -webkit-border-radius: 28;
+  -moz-border-radius: 28;
+  border-radius: 28px;
+  font-family: Arial;
+  color: #ffffff;
+  font-size: 20px;
+  background: #69cc19;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: #fc3c3c;
+  text-decoration: none;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+.switch input {display:none;}
+
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.simulatebox{
+
+  position : absolute;
+  width : 500px;
+  height : 400px;
+  border-color: red;
+  border-style: solid;
+  border-width: 5px;
+
+}
+
+div label input {
+  margin-right:100px;
+}
+body {
+  font-family:sans-serif;
+}
+
+#ck-button {
+  margin:4px;
+  background-color:#EFEFEF;
+  border-radius:4px;
+  border:1px solid #D0D0D0;
+  overflow:auto;
+  float:left;
+}
+
+#ck-button label {
+  float:left;
+  width:4.0em;
+}
+
+#ck-button label span {
+  text-align:center;
+  padding:3px 0px;
+  display:block;
+  border-radius:4px;
+}
+
+#ck-button label input {
+  position:absolute;
+  top:-20px;
+}
+
+#ck-button input:hover + span {
+  background-color:#efE0E0;
+}
+
+#ck-button input:checked + span {
+  background-color:#911;
+  color:#fff;
+}
+
+#ck-button input:checked:hover + span {
+  background-color:#c11;
+  color:#fff;
+}
+
+
