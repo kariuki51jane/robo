@@ -10,7 +10,7 @@ GPIO.setup(15, GPIO.IN)    #S03
 GPIO.setup(19, GPIO.IN)    #SO4
 GPIO.setup(21, GPIO.IN)    #SO5
 
-speed = 50 # constant forward speed
+speed = 30 # constant forward speed
 lamda = 0.3 # turning rate factor
 
 
@@ -52,18 +52,12 @@ try:
         angle_difference=-30
 
     pi=math.pi
-    angle_difference=45
     d_phi = lamda * (-math.sin(pi*(angle_difference)/180))
     v_mm_per_second = d_phi/math.pi * 53
     v_pulses_per_second = v_mm_per_second / 0.13
-
-    print(-v_pulses_per_second + speed, v_pulses_per_second + speed)
+#    print(-v_pulses_per_second + speed, v_pulses_per_second + speed)
     drive.SetSpeed(-v_pulses_per_second + speed, v_pulses_per_second + speed)
- 
-    
-    else:
-        drive.stop()
-    
+
        
 except:
     drive.stop()
