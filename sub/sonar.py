@@ -5,7 +5,7 @@ GPIO.setmode(GPIO.BOARD)
 
 
 
-class sonar:
+class sonar1:
   def __init__(self,TRIG,ECHO):
     self.TRIG_Pin=TRIG
     self.ECHO_Pin=ECHO
@@ -24,7 +24,10 @@ class sonar:
     while GPIO.input(self.ECHO_Pin)==1:
       pulse_end = time.time()
 
-    pulse_duration = pulse_end - pulse_start
+    try:
+      pulse_duration = pulse_end - pulse_start
+    except:
+      print("Error happened\n")
     distance = pulse_duration * 17150
     distance = round(distance, 2)
     

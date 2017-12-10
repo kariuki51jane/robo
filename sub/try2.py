@@ -6,6 +6,7 @@ import sys
 import select
 
 activated_behavior=0
+
 def heardEnter():
     i,o,e = select.select([sys.stdin],[],[],0.0001)
     for s in i:
@@ -24,10 +25,13 @@ def Arbitrator():
 
 	print threading.currentThread().getName(), 'Exiting'
 
+B1=behaviors.obstacle_avoidance()
+B2=behaviors.lineFollowing()
+
 def Behavior1():
 	print threading.currentThread().getName(), 'Starting'
 	print "Behavior 1"
-	B1=behaviors.obstacle_avoidance()
+	
 	global activated_behavior	
 	while True:
 		if heardEnter()==True:
@@ -36,7 +40,8 @@ def Behavior1():
 			print "B1 Take control True"
 			activated_behavior=1
 			print activated_behavior
-			#B1.action()
+			B1.action()
+		    
 			activated_behavior=0
 		time.sleep(1)
 	
@@ -46,7 +51,7 @@ def Behavior2():
 	print threading.currentThread().getName(), 'Starting'
 	print "Behavior 2"
 	global activated_behavior
-	B2=behaviors.wandering()
+	
         while True:
 		if heardEnter()==True:
                 	break
@@ -54,13 +59,13 @@ def Behavior2():
                 if(B2.takeControl()==True and not(activated_behavior==1)):
                         print "B2 Take control True"
 			print activated_behavior
-			#B2.action()
-                time.sleep(1)
+			B2.action()
+           
 	print threading.currentThread().getName(), 'Exiting'
 
 arbit = threading.Thread(target=Arbitrator)
 beh1  = threading.Thread(target=Behavior1)
-beh2  = threading.Thread(target=Behavior2) 
+#beh2  = threading.Thread(target=Behavior2) 
 
 arbit.start()
 beh1.start()
